@@ -24,7 +24,7 @@ public class Produto implements Serializable
 	private Double preco;
 	
 	@ManyToMany
-	@JoinTable(name = "PRODUTO-CATEGORIA", 
+	@JoinTable(name = "PRODUTO_CATEGORIA", 
 			   joinColumns = @JoinColumn(name = "produto_id"), 
 			   inverseJoinColumns = @JoinColumn(name = "Categoria_id")
 			  )
