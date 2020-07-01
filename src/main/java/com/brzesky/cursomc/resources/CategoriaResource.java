@@ -23,16 +23,5 @@ public class CategoriaResource
 		Categoria obj = service.buscar(id);
 		
 		return ResponseEntity.ok().body(obj);
-		
-//		Categoria catUm = new Categoria(1, "Informática");
-//		Categoria catDois = new Categoria(2, "Escritório");
-//		
-//		List<Categoria> lista = new ArrayList<>();
-//		
-//		lista.add(catUm);
-//		lista.add(catDois);
-//		
-//		return lista;
-//		 return "O REST ESTÁ FUNCIONANDO!!!";
 	}
 }
