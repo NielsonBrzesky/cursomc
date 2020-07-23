@@ -105,19 +105,19 @@ public class CursomcApplication implements CommandLineRunner
 		 
 		 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		 
-//		 Pedido ped1 = new Pedido(null, sdf.parse("30/09/2018 10:55"), cli1, e1);
-//		 Pedido ped2 = new Pedido(null, sdf.parse("10/11/2018 22:55"), cli1, e2);
-//		 
-//		 Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
-//		 ped1.setPagamento(pagto1);
-//				 
-//		 Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/02/2020 00:30"), null);
-//		 ped2.setPagamento(pagto2);
-//		 
-//		 cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
-//		 
-//		 pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
-//		 pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		 Pedido ped1 = new Pedido(null, sdf.parse("30/09/2018 10:55"), cli1, e1);
+		 Pedido ped2 = new Pedido(null, sdf.parse("10/11/2018 22:55"), cli1, e2);
+		 
+		 Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
+		 ped1.setPagamento(pagto1);
+				 
+		 Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/02/2020 00:30"), null);
+		 ped2.setPagamento(pagto2);
+		 
+		 cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
+		 
+		 pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
+		 pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
 		 
 		 
 	}

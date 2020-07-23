@@ -20,16 +20,17 @@ public class Pedido implements Serializable
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private Date instante;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")//mapeamento feito para pagamento ter o mesmo id de pedido.
 	private Pagamento pagamento;
 	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	 
 	@ManyToOne
-	@JoinColumn(name = "enderco_de_entrega_id")
+	@JoinColumn(name = "endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
 	
 	public Pedido(){}
@@ -106,6 +107,5 @@ public class Pedido implements Serializable
 			return false;
 		return true;
 	}
-	
 	
 }

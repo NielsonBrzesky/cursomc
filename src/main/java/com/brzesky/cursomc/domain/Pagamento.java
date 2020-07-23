@@ -13,19 +13,18 @@ import javax.persistence.OneToOne;
 import com.brzesky.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pagamento implements Serializable 
-{
+@Inheritance(strategy = InheritanceType.JOINED)//Mapeia a herança com tabelão ou com tabelas separadas, no caso aqui é uma tabela pra cada subclasse.
+public abstract class Pagamento implements Serializable//A classe está como abstrata para garantir que não sejam instaciaods objetos do tipo pagamento. 
+{											//Para que toda vez que for instaciado um objeto do tipo pagamento seja utilizado um new, e nunca diretamente.
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
-
+	private Integer id;//O id do pagamento vai se o mesmo do pedido correspondente.
 	private Integer estado;
 	
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
-	@MapsId
+	@MapsId//Garante que o id do pedido seja o mesmo do pagamento.
 	private Pedido pedido;
 	
 	public Pagamento(){}
@@ -37,7 +36,7 @@ public abstract class Pagamento implements Serializable
 		this.estado = estado.getCod();
 		this.pedido = pedido;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -46,12 +45,12 @@ public abstract class Pagamento implements Serializable
 		this.id = id;
 	}
 
-	public EstadoPagamento getEstado() {
-		return EstadoPagamento.toEnum(estado);
+	public Integer getEstado() {
+		return estado;
 	}
 
-	public void setEstado(EstadoPagamento estado) { 
-		this.estado = estado.getCod();
+	public void setEstado(Integer estado) {
+		this.estado = estado;
 	}
 
 	public Pedido getPedido() {
@@ -71,8 +70,7 @@ public abstract class Pagamento implements Serializable
 	}
 
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -86,6 +84,6 @@ public abstract class Pagamento implements Serializable
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 
 }

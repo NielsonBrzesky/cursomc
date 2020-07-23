@@ -38,6 +38,4 @@ public class PagamentoComBoleto extends Pagamento
 		this.dataPagamento = dataPagamento;
 	}
 	
-	
-	
 }
