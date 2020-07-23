@@ -21,7 +21,7 @@ public class Cidade implements Serializable
 	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference
+	@JsonManagedReference//A cidade serializa e o estado não pode serializar a Cidade, para não caontecer referência ciclica.
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
