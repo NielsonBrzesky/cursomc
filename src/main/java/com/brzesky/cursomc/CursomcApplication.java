@@ -1,6 +1,7 @@
 package com.brzesky.cursomc;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.brzesky.cursomc.domain.Cidade;
 import com.brzesky.cursomc.domain.Cliente;
 import com.brzesky.cursomc.domain.Endereco;
 import com.brzesky.cursomc.domain.Estado;
+import com.brzesky.cursomc.domain.ItemPedido;
 import com.brzesky.cursomc.domain.Pagamento;
 import com.brzesky.cursomc.domain.PagamentoComBoleto;
 import com.brzesky.cursomc.domain.PagamentoComCartao;
@@ -25,6 +27,7 @@ import com.brzesky.cursomc.repositories.CidadeRepository;
 import com.brzesky.cursomc.repositories.ClienteRepository;
 import com.brzesky.cursomc.repositories.EnderecoRepository;
 import com.brzesky.cursomc.repositories.EstadoRepository;
+import com.brzesky.cursomc.repositories.ItemPedidoRepository;
 import com.brzesky.cursomc.repositories.PagamentoRepository;
 import com.brzesky.cursomc.repositories.PedidoRepository;
 import com.brzesky.cursomc.repositories.ProdutoRepository;
@@ -55,6 +58,9 @@ public class CursomcApplication implements CommandLineRunner
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args){SpringApplication.run(CursomcApplication.class, args);}
 
@@ -119,7 +125,18 @@ public class CursomcApplication implements CommandLineRunner
 		 pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		 pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
 		 
+		ItemPedido ip1 = new ItemPedido(ped1, pUm, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, pTres, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, pDois, 100.00, 1, 800.00);
+		
+		ped1.getItemPedidos().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItemPedidos().addAll(Arrays.asList(ip3));
+		
+		pUm.getItemPedidos().addAll(Arrays.asList(ip1));
+		pDois.getItemPedidos().addAll(Arrays.asList(ip3));
+		pTres.getItemPedidos().addAll(Arrays.asList(ip2));
 		 
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 }
 
