@@ -2,7 +2,6 @@ package com.brzesky.cursomc.services;
 
 import java.util.Optional;
 
-import org.hibernate.ObjectDeletedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class ClienteService
 	@Autowired
 	private ClienteRepository repositorio;
 	
-	public Cliente buscar(Integer id)
+	public Cliente find(Integer id)
 	{
 		Optional<Cliente> obj = repositorio.findById(id);
 		
