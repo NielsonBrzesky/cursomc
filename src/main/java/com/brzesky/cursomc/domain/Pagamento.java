@@ -36,7 +36,7 @@ public abstract class Pagamento implements Serializable//A classe está como abs
 	{
 		super();
 		this.id = id;
-		this.estado = estado.getCod();
+		this.estado = (estado == null) ? null : estado.getCod();//Tratamento para parametro já entrar nulo se não puder receber nulo depois.
 		this.pedido = pedido;
 	}
 

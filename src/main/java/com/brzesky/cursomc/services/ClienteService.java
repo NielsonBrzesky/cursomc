@@ -68,7 +68,6 @@ public class ClienteService
 	{
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repositorio.findAll(pageRequest);
-		
 	}
 	
 	public Cliente fromDTO(ClienteDTO objDto)
