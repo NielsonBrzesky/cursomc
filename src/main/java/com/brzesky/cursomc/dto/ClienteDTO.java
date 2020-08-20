@@ -8,7 +8,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import com.brzesky.cursomc.domain.Cliente;
+import com.brzesky.cursomc.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
