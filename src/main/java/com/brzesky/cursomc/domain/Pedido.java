@@ -43,7 +43,7 @@ public class Pedido implements Serializable
 	private Endereco enderecoDeEntrega;
 	
 	@OneToMany(mappedBy = "id.pedido")//Está informando que já foi mapeado com o id do pedido.
-	private Set<ItemPedido> itemPedidos = new HashSet<>();
+	private Set<ItemPedido> itens = new HashSet<>();
 	
 	public Pedido(){}
 
@@ -59,7 +59,7 @@ public class Pedido implements Serializable
 	{
 		double soma = 0.0;
 		
-		for(ItemPedido ip : itemPedidos)
+		for(ItemPedido ip : itens)
 			soma = soma + ip.getSubTotal();
 		
 		return soma;
@@ -101,16 +101,16 @@ public class Pedido implements Serializable
 		return enderecoDeEntrega;
 	}
 
-	public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
-		this.enderecoDeEntrega = enderecoDeEntrega;
+	public Set<ItemPedido> getItens() {
+		return itens;
 	}
 
-	public Set<ItemPedido> getItemPedidos() {
-		return itemPedidos;
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
 	}
-	
-	public void setItemPedidos(Set<ItemPedido> itemPedidos) {
-		this.itemPedidos = itemPedidos;
+
+	public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
+		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
 	@Override

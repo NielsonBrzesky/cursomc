@@ -12,9 +12,11 @@ import javax.persistence.OneToOne;
 
 import com.brzesky.cursomc.domain.enums.EstadoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)//Mapeia a herança com tabelão ou com tabelas separadas, no caso aqui é uma tabela pra cada subclasse.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento implements Serializable//A classe está como abstrata para garantir que não sejam instaciaods objetos do tipo pagamento. 
 {											//Para que toda vez que for instaciado um objeto do tipo pagamento seja utilizado um new, e nunca diretamente.
 	private static final long serialVersionUID = 1L;
@@ -48,12 +50,12 @@ public abstract class Pagamento implements Serializable//A classe está como abs
 		this.id = id;
 	}
 
-	public Integer getEstado() {
-		return estado;
+	public EstadoPagamento getEstado() {
+		return EstadoPagamento.toEnum(estado);
 	}
 
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	public void setEstado(EstadoPagamento estado) {
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {
