@@ -11,7 +11,6 @@ import com.brzesky.cursomc.domain.ItemPedido;
 import com.brzesky.cursomc.domain.PagamentoComBoleto;
 import com.brzesky.cursomc.domain.Pedido;
 import com.brzesky.cursomc.domain.enums.EstadoPagamento;
-import com.brzesky.cursomc.repositories.ClienteRepository;
 import com.brzesky.cursomc.repositories.ItemPedidoRepository;
 import com.brzesky.cursomc.repositories.PagamentoRepository;
 import com.brzesky.cursomc.repositories.PedidoRepository;
@@ -37,6 +36,9 @@ public class PedidoService
 	
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	public Pedido find(Integer id)
 	{
@@ -74,7 +76,7 @@ public class PedidoService
 		
 		itemPedidoRepository.saveAll(obj.getItens());
 		
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		
 		return obj;
 	}
