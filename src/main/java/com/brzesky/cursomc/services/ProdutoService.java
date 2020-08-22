@@ -1,6 +1,5 @@
 package com.brzesky.cursomc.services;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,13 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.brzesky.cursomc.domain.Categoria;
-import com.brzesky.cursomc.domain.PagamentoComBoleto;
-import com.brzesky.cursomc.domain.Pedido;
 import com.brzesky.cursomc.domain.Produto;
-import com.brzesky.cursomc.domain.enums.EstadoPagamento;
 import com.brzesky.cursomc.repositories.CategoriaRepository;
 import com.brzesky.cursomc.repositories.ProdutoRepository;
 import com.brzesky.cursomc.services.exceptions.ObjectNotFoundException;
